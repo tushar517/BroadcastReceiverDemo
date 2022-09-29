@@ -15,17 +15,20 @@ class MyReceiver : BroadcastReceiver() {
         Log.i("MyAction",action)
         val isAirplaneMode = intent?.getBooleanExtra("state", false)
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        if(action.equals("android.intent.action.AIRPLANE_MODE")) {
-            if (isAirplaneMode) {
-                Toast.makeText(context, "Airplane Mode on", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(context, "Airplane Mode off", Toast.LENGTH_LONG).show()
 
+        when(action){
+            "android.intent.action.AIRPLANE_MODE"->{
+                if (isAirplaneMode) {
+                    Toast.makeText(context, "Airplane Mode on", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(context, "Airplane Mode off", Toast.LENGTH_LONG).show()
+
+                }
             }
-        }
 
-        if(action.equals("android.intent.action.BATTERY_LOW")) {
+            "android.intent.action.BATTERY_LOW"->{
                 Toast.makeText(context, "Battery is Low", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }
